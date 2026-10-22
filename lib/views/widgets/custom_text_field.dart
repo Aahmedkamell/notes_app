@@ -23,6 +23,7 @@ class CustomTextField extends StatelessWidget {
     );
   }
 
+  // ignore: strict_top_level_inference
   OutlineInputBorder buildBorder([color]) => OutlineInputBorder(
     borderRadius: BorderRadius.circular(8),
     borderSide: BorderSide(color: color ?? Colors.white),
