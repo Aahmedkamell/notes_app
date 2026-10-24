@@ -7,22 +7,59 @@ class AddNoteBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 32),
-            CustomTextField(hint: 'tittle'),
-            SizedBox(height: 16),
-            CustomTextField(hint: 'content', maxlines: 5),
-            SizedBox(height: 32),
-            CustomButton(),
-            SizedBox(height: 16),
-          ],
-        ),
-      ),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: SingleChildScrollView(child: AddNoteForm()),
     );
   }
 }
 
+class AddNoteForm extends StatefulWidget {
+  const new({super.key});
+
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  String? tittle, subTittle;
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formKey,
+      autovalidateMode: autovalidateMode,
+      child: Column(
+        children: [
+          const SizedBox(height: 32),
+          CustomTextField(
+            onSaved: (value) {
+              tittle = value;
+            },
+            hint: 'tittle',
+          ),
+          const SizedBox(height: 16),
+          CustomTextField(
+            onSaved: (value) {
+              subTittle = value;
+            },
+            hint: 'content',
+            maxlines: 5,
+          ),
+          const SizedBox(height: 32),
+          CustomButton(
+            onTap: () {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+              } else {
+                autovalidateMode = AutovalidateMode.always;
+              }
+            },
+          ),
+          const SizedBox(height: 16),
+        ],
+      ),
+    );
+  }
+}
