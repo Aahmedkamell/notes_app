@@ -11,10 +11,12 @@ final class NotesSuccses extends NotesState {
   final List<NoteModel> notes;
 
   new({required this.notes});
+
+  
 }
 
 final class NotesFailure extends NotesState {
   final String errMessage;
 
-  new({required this.errMessage});
+  new(String string, {required this.errMessage});
 }
