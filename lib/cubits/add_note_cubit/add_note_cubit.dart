@@ -14,7 +14,7 @@ class AddNoteCubit extends Cubit<AddNoteState> {
   Future<void> addNote(NoteModel note) async {
     emit(AddNoteLoading());
     try {
-      var notesBox = Hive.box(kNotesBox);
+      var notesBox = Hive.box<NoteModel>(kNotesBox);
       await notesBox.add(note);
       emit(AddNoteSucsess());
     } catch (e) {
