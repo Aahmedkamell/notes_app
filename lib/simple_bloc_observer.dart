@@ -24,17 +24,17 @@ class SimpleBlocObserver implements BlocObserver {
     Object? error,
     StackTrace? stackTrace,
   ]) {
-    // TODO: implement onDone
+
   }
 
   @override
   void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
-    // TODO: implement onError
+  
   }
 
   @override
   void onEvent(Bloc<dynamic, dynamic> bloc, Object? event) {
-    // TODO: implement onEvent
+
   }
 
   @override
@@ -42,6 +42,6 @@ class SimpleBlocObserver implements BlocObserver {
     Bloc<dynamic, dynamic> bloc,
     Transition<dynamic, dynamic> transition,
   ) {
-    // TODO: implement onTransition
+    
   }
 }
